@@ -1,0 +1,13 @@
+main{
+  width: 95%;
+  margin: auto;
+  align-self: center;
+  align-content: center;
+}
+app-post-create{
+  margin: auto;
+}
+
+app-post-list{
+  margin: 2rem;
+}
