@@ -1,0 +1,32 @@
+
+<mat-card class="example-card">
+	<mat-card-header >
+		<mat-card-title>User login</mat-card-title>
+		<mat-card-subtitle>Welcome back!</mat-card-subtitle>
+	</mat-card-header>
+
+		<mat-spinner *ngIf="loading"></mat-spinner>
+
+	<mat-card-actions *ngIf="!loading">
+		<form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+			<mat-form-field appearance="fill">
+		    <mat-label>eMail</mat-label>
+				<input matInput type="email" name="loginMail" ngModel placeholder="eMail" #loginMail="ngModel" required email>
+    		 <mat-error *ngIf="loginMail.invalid">{{"Please provide valid eMail address"}}</mat-error>
+			</mat-form-field>
+			<mat-form-field appearance="fill">
+		    <mat-label>Password</mat-label>
+        <input matInput type="password" name="loginPwd" ngModel placeholder="Password" #loginPwd="ngModel" required password>
+    		<mat-error *ngIf="loginPwd.invalid">{{"Invalid password"}}</mat-error>
+			</mat-form-field>
+				<button
+					mat-raised-button
+					color="primary"
+					type="submit">LogIn
+				</button>
+		</form>
+	</mat-card-actions>
+	<mat-card-footer>
+			What's new? 2020 <sup>TM</sup>
+	</mat-card-footer>
+</mat-card>

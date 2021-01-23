@@ -1,0 +1,39 @@
+
+<mat-card class="example-card">
+	<mat-card-header >
+		<mat-card-title>User signup</mat-card-title>
+		<mat-card-subtitle>Glad you jouin us!</mat-card-subtitle>
+	</mat-card-header>
+
+		<mat-spinner *ngIf="loading"></mat-spinner>
+
+	<mat-card-actions *ngIf="!loading">
+		<form (submit)="onSignup(signupForm)" #signupForm="ngForm">
+			<mat-form-field appearance="fill">
+		    <mat-label>eMail</mat-label>
+				<input matInput type="email" name="signupMail" ngModel placeholder="eMail" #signupMail="ngModel" required email>
+    		 <mat-error *ngIf="signupMail.invalid">{{"Please provide valid eMail address"}}</mat-error>
+			</mat-form-field>
+			<mat-form-field appearance="fill">
+		    <mat-label>Password</mat-label>
+        <input matInput type="password" name="signupPwd" ngModel placeholder="Password" #signupPwd="ngModel" required password >
+    		<mat-error *ngIf="signupPwd.invalid">{{"Invalid password"}}</mat-error>
+			</mat-form-field>
+				<button
+					mat-raised-button
+					color="primary"
+					type="submit">Register
+				</button>
+		</form>
+	</mat-card-actions>
+	<mat-card-footer>
+			What's new? 2020 <sup>TM</sup>
+	</mat-card-footer>
+</mat-card>
+
+<mat-card *ngIf="signUpError" class="example-card" id="error-card">
+	<mat-card-header id="error-header">
+		<mat-card-title >User signup error</mat-card-title>
+		<mat-card-subtitle>Please provide a valid email</mat-card-subtitle>
+	</mat-card-header>
+</mat-card>

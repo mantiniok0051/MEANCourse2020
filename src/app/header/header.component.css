@@ -1,0 +1,23 @@
+mat-toolbar{
+  box-shadow: 0.0rem 0.2rem 0.4rem rgba(0, 0, 0, 0.5);
+}
+a{
+  text-decoration: none;
+  color: #FFF;
+}
+ul{
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+li{
+  display: inline-flex;
+}
+.spacer{
+  flex: 1 1 auto;
+}
+.crest{
+  width:40px;
+  margin: auto 0.3rem auto 0rem;
+}

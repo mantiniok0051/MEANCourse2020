@@ -1,0 +1,22 @@
+mat-accordion{
+  width: 95%;
+
+}
+.info-text{
+
+}
+mat-spinner {
+  margin: auto;
+}
+
+.post-img-list{
+  align-content: center;
+  overflow-y: hidden;
+}
+.post-img-list>img{
+  width: 100%;
+}
+
+mat-paginator{
+  margin-top: 1.5rem;
+}

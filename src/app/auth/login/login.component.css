@@ -1,0 +1,43 @@
+mat-card-header{
+  background-image: url('https://image.shutterstock.com/image-vector/users-laptops-tablets-smartphone-sign-260nw-1337111516.jpg');
+  background-size: cover;
+  padding: 2.1rem auto;
+}
+mat-card-title{
+  margin: 1.2rem auto 0.2rem auto;
+  color: white;
+}
+mat-card-subtitle{
+  margin: 0 auto 1.2rem auto;
+  color: silver;
+}
+.mat-form-field{
+  min-width: 99%;
+  max-width: 550px;
+}
+.mat-form-field>textarea{
+  min-width: 340px;
+  max-width: 540px;
+}
+
+mat-spinner {
+  margin: auto;
+}
+mat-card {
+  margin:auto;
+  width: 95%;
+}
+
+mat-card-actions{
+  font-size: 1.2rem;
+  color: #222;
+  padding: 0.2rem;
+}
+mat-card-content{}
+
+
+mat-card-footer {
+  font-size: 1rem;
+  color: #ddd;
+  padding: 0.3rem 33%;
+}
