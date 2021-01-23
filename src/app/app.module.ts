@@ -11,7 +11,8 @@ import { MatInputModule,
          MatExpansionModule,
          MatProgressSpinnerModule,
          MatPaginatorModule,
-         MatIconModule
+         MatIconModule,
+         MatDialogModule
         } from '@angular/material';
 
 
@@ -24,6 +25,7 @@ import { HeaderComponent   } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LogInComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/signup/signup.component';
+import { ErrorComponent } from './error/error.component';
 
 /*============= Internal Services =============*/
 import { PostServise } from './posts/post.service'; /*No esta listado ni en imports o providers*/
@@ -38,7 +40,8 @@ import { ErrorInterceptor } from './error-interceptor';
     HeaderComponent,
     PostListComponent,
     LogInComponent,
-    SignUpComponent
+    SignUpComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -55,12 +58,14 @@ import { ErrorInterceptor } from './error-interceptor';
     MatPaginatorModule,
     MatIconModule,
     HttpClientModule,
+    MatDialogModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true},
     {provide: HTTP_INTERCEPTORS, useClass:ErrorInterceptor, multi:true}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[ErrorComponent]
 })
 export class AppModule { }
 //ng serve mean-course --disable-host-check true --host 192.168.100.8 --port 80
