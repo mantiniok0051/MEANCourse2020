@@ -17,7 +17,7 @@ export class ErrorInterceptor implements HttpInterceptor{
       catchError((error:HttpErrorResponse)=>{
         let errorMessage = 'An unknown error occurred';
         if (error.error.message) {
-            errorMessage = error.error.message;
+            errorMessage = error.error.error.message;
         }
         this.dialog.open(ErrorComponent, {data:{message:errorMessage}});
         return throwError(error);
