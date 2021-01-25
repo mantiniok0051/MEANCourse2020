@@ -16,10 +16,10 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class PostCreateComponent implements OnInit, OnDestroy {
   private ComponentTitle: string;
-  private ComponentSubTitle: string;
+  public ComponentSubTitle: string;
 
   private mode = 'create';
-  private loading = false;
+  public loading = false;
   private target_id:string;
   private authListenerSubs:Subscription;
   public edit_post: Post;
@@ -66,8 +66,8 @@ export class PostCreateComponent implements OnInit, OnDestroy {
           this.CreatePostForm.setValue({
                               PostTitle:this.edit_post.title,
                               PostContent:this.edit_post.content,
-                              PostImage:this.edit_post.imagePath,
-                              PostCreator:this.edit_post.creator}
+                              PostImage:this.edit_post.imagePath
+                              }
                             );
         this.PostImgPreview = postData.imagePath;
         });

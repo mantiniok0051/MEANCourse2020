@@ -6,7 +6,9 @@ import { Subject } from 'rxjs';
 
 
 import { AuthData } from './auth-data.model';
+import { environment } from "../../environments/environment";
 
+const BACKEND_URL = environment.apiURL+'/users/';
 
 @Injectable({
   providedIn: 'root'
@@ -53,7 +55,7 @@ export class AuthService {
 
     console.log(authData);
 
-    this.http.post('http://192.168.100.8:4202/api/users/signup', authData).subscribe((response)=>{
+    this.http.post(BACKEND_URL+'signup', authData).subscribe((response)=>{
                console.log(response);
                this.router.navigate(['/']);
              }, error =>{
@@ -68,7 +70,7 @@ export class AuthService {
       email:email,
       password:password
     };
-    this.http.post<{token:string, expiresIn:number, userID:string}>('http://192.168.100.8:4202/api/users/login', authData)
+    this.http.post<{token:string, expiresIn:number, userID:string}>(BACKEND_URL+'login', authData)
     .subscribe((response)=>{
       const token = response.token;
       this.token = token;

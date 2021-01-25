@@ -4,8 +4,10 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-
+import { environment } from "../../environments/environment";
 import { Post } from './post.model';
+
+const BACKEND_URL = environment.apiURL+'/posts/';
 
 
 @Injectable({providedIn: 'root'})
@@ -21,7 +23,7 @@ export class PostServise{
     this.http.get<{message: string,
                    posts: any,
                    totalStoredPosts:number}>
-                  ('http://192.168.100.8:4202/api/posts'+queryParams)
+                  (BACKEND_URL+queryParams)
     .pipe(map((postData) => {
           return {retrivedPosts: postData.posts.map(post => {
                   return { image: post.imagePath,
@@ -55,7 +57,7 @@ export class PostServise{
     postData.append('image',image, title);
 
     this.http.post<{message: string, post: Post}>(
-      'http://192.168.100.8:4202/api/posts', postData)
+      BACKEND_URL, postData)
       .subscribe((responseData)=>{
         console.log(responseData);
 
@@ -64,7 +66,7 @@ export class PostServise{
   }
 
   deletePost(target_id: string){
-    return this.http.delete('http://192.168.100.8:4202/api/posts/'+target_id);
+    return this.http.delete(BACKEND_URL+target_id);
 
   }
 
@@ -74,7 +76,7 @@ export class PostServise{
                           title:string,
                           content:string,
                           imagePath: string,
-                          creator:string}>('http://192.168.100.8:4202/api/posts/'+target_id);
+                          creator:string}>(BACKEND_URL+target_id);
   }
 
   updatePost(target_id: string, target_title: string, target_content: string, target_image: File | string, target_creator:string){
@@ -96,7 +98,7 @@ export class PostServise{
         imagePath:target_image,
         creator:null};
     }
-    this.http.put('http://192.168.100.8:4202/api/posts/'+target_id, edited_post)
+    this.http.put(BACKEND_URL+target_id, edited_post)
     .subscribe((response) => {
       this.router.navigate(['/']);
     });
