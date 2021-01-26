@@ -17,10 +17,10 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class PostListComponent implements OnInit, OnDestroy {
 
-  private PostsList:Post[] = [];
+  public PostsList:Post[] = [];
   private PostUpdateSubscription: Subscription;
   private authListenerSubs:Subscription;
-  private loading = false;
+  public loading = false;
 
   public totalPosts=0;
   public postPerPage=3;
@@ -33,8 +33,7 @@ export class PostListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): any{
     this.loading = true;
-    this.userID = null;
-    console.log(this.authSvc.getUserID());
+    this.userID = this.authSvc.getUserID();
 
     this.postSvc.getPostList(this.postPerPage, this.currentPage);
     this.PostUpdateSubscription = this.postSvc.getPostUpdatedListener()
@@ -62,6 +61,8 @@ export class PostListComponent implements OnInit, OnDestroy {
     this.loading = true;
     this.postSvc.deletePost(target_id).subscribe(()=>{
                   this.postSvc.getPostList(this.postPerPage, this.currentPage);
+                }, ()=>{
+                  this.loading = false;
                 });
   }
 
